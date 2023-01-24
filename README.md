@@ -1,2 +1,2 @@
 # GrapeInSilico
-A user oriented framework for modelling GrapeVine with openalea modules
+A user oriented and specialised framework for modelling GrapeVine with openalea packages
