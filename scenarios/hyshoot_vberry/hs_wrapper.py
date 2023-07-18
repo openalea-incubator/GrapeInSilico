@@ -13,7 +13,7 @@ from pandas import DataFrame
 
 from hydroshoot import (architecture, solver, io)
 from hydroshoot.energy import calc_effective_sky_temperature
-from hydroshoot.initialisation import init_model, init_hourly
+from hydroshoot.initialisation import init_model, init_hourly, set_collar_water_potential_function
 
 
 def run(g: MTG, wd: Path, params: dict = None, scene: Scene = None, write_result: bool = True, path_output: Path = None,
@@ -75,6 +75,8 @@ def run(g: MTG, wd: Path, params: dict = None, scene: Scene = None, write_result
 
     g = init_model(g=g, inputs=inputs)
 
+    calc_collar_water_potential = set_collar_water_potential_function(params=params)
+
     # Save geometry in an external file
     # HSArc.mtg_save_geometry(scene, output_path)
 
@@ -93,7 +95,7 @@ def run(g: MTG, wd: Path, params: dict = None, scene: Scene = None, write_result
         psi_grape_ls = []
 
     # The time loop +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    inputs_hourly = io.HydroShootHourlyInputs(psi_soil=inputs.psi_soil_forced, sun2scene=inputs.sun2scene)
+    inputs_hourly = io.HydroShootHourlyInputs(psi_soil=inputs.psi_soil, sun2scene=inputs.sun2scene)
 
     for date in params.simulation.date_range:
         print("=" * 72)
@@ -101,7 +103,7 @@ def run(g: MTG, wd: Path, params: dict = None, scene: Scene = None, write_result
 
         # Select meteo data
         inputs_hourly.update(g=g, date_sim=date, hourly_weather=inputs.weather[inputs.weather.index == date],
-                             psi_pd=inputs.psi_pd, params=params)
+                             psi_pd=inputs.psi_pd, is_psi_forced=inputs.is_psi_soil_forced, params=params)
 
         g, diffuse_to_total_irradiance_ratio = init_hourly(
             g=g, inputs_hourly=inputs_hourly, leaf_ppfd=inputs.leaf_ppfd, params=params)
@@ -113,7 +115,8 @@ def run(g: MTG, wd: Path, params: dict = None, scene: Scene = None, write_result
 
         solver.solve_interactions(
             g=g, meteo=inputs_hourly.weather.loc[date], psi_soil=inputs_hourly.psi_soil,
-            t_soil=inputs_hourly.soil_temperature, t_sky_eff=inputs_hourly.sky_temperature, params=params)
+            t_soil=inputs_hourly.soil_temperature, t_sky_eff=inputs_hourly.sky_temperature, params=params,
+            calc_collar_water_potential=calc_collar_water_potential)
 
         # Write mtg to an external file
         if is_save_mtg and (scene is not None):

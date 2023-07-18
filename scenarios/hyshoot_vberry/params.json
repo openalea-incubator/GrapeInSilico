@@ -4,15 +4,13 @@
     "edate": "2012-08-04 23:00:00",
     "latitude": 43.61,
     "longitude": 3.87,
-	"meteo": "meteo.input",
     "elevation": 44.0,
     "tzone": "Europe/Paris",
     "output_index": "",
     "unit_scene_length": "cm",
     "hydraulic_structure": true,
     "negligible_shoot_resistance": false,
-    "energy_budget": true,
-    "soil_water_deficit": true
+    "energy_budget": true
   },
   "planting": {
     "spacing_between_rows": 3.6,
@@ -110,6 +108,7 @@
       "n": 4.0
     },
     "par_photo": {
+      "alpha" : 0.24,
       "Vcm25": 89.0,
       "Jm25": 143.0,
       "cRd": 0.008,
