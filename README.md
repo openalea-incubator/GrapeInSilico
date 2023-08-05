@@ -26,7 +26,7 @@ Clone the following repositories from github.com/openalea:
 Checkout the visualea branch in all the above except from deploy & hydroshoot (main).
 
 Install each module using the develop mode
-```python setup.py develop```     (in openalea-components it is multisetup.py)
+```python setup.py develop```     (in openalea-components it is ```multisetup.py```)
 
 Clone from openalea-incubator:
     
