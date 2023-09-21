@@ -33,6 +33,7 @@ Clone from openalea-incubator:
 *    TopVine
 *    VirtualBerry
 *    m2a3pc
+*    GrapeInSilico
 
 Install each module using the develop mode
 ```python setup.py develop```    _(m2a3pc fails in windows cause of some lost path)_
