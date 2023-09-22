@@ -9,9 +9,9 @@ At first you make sure that you have installed the package manager conda in your
 
 Then we create a conda environment:
 
-      conda create -n GIS -c openalea3 -c conda-forge openalea.plantgl pyqglviewer python=3.8
+      conda create -n GIS -c openalea3 -c conda-forge openalea.plantgl openalea.mtg pyqglviewer python=3.8
       conda activate GIS
-      conda install -c openalea3 -c conda-forge numpy scipy qtconsole pandas matplotlib openalea.sconsx networkx ipykernel ipyparallel pytest rpy2 path
+      conda install -c openalea3 -c conda-forge numpy scipy qtconsole pandas matplotlib openalea.sconsx alinea.astk alinea.caribu sympy networkx ipykernel ipyparallel pytest rpy2 path jsonschema
 
 Clone the following repositories from github.com/openalea:
 
