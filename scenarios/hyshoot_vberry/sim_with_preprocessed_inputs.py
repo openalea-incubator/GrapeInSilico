@@ -5,6 +5,7 @@ simple shoot architecture.
 from json import load, dump
 from pathlib import Path
 
+import pkg_resources
 from openalea.mtg import traversal, mtg
 from openalea.mtg.mtg import MTG
 from openalea.plantgl.all import Scene
