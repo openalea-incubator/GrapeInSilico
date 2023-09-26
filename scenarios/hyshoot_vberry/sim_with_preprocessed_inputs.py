@@ -75,13 +75,12 @@ def preprocess_inputs(grapevine_mtg: MTG, path_project_dir: Path, psi_soil: floa
         dump(dynamic_data, f_prop)
     pass
 
-if __name__ == '__main__':
-    path_project = Path(__file__).parent
-    path_preprocessed_data = path_project / 'preprocessed_inputs'
-else:
-    path_project = Path("C:\GitModeles\GrapeInSilico\scenarios\hyshoot_vberry\sim_with_preprocessed_inputs.py").parent
-    path_preprocessed_data = path_project / 'preprocessed_inputs'
+#if __name__ == '__main__':
+path_project = Path(__file__).parent
+#else:
+#path_project = Path("C:\GitModeles\GrapeInSilico\scenarios\hyshoot_vberry\sim_with_preprocessed_inputs.py").parent
 
+path_preprocessed_data = path_project / 'preprocessed_inputs'
 path_output = path_project / 'output' / 'time_series_with_preprocessed_data3.csv'
 
 g, scene = build_mtg(path_file=path_project / 'grapevine_pot.csv', is_show_scene=False)
@@ -92,7 +91,7 @@ with open(path_preprocessed_data / 'static.json') as f:
 with open(path_preprocessed_data / 'dynamic.json') as f:
         dynamic_inputs = load(f)
 
-path_weather = r'C:\GitModeles\GrapeInSilico\scenarios\hyshoot_vberry\meteo.input'
+path_weather = path_project / 'meteo.input'
 
 def summary_results(grape_vid):
     return(hs_wrapper.run(g=g, wd=path_project, scene=scene, gdd_since_budbreak=1000.,
