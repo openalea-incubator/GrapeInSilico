@@ -10,7 +10,7 @@ At first you make sure that you have installed the package manager mamba in your
 Then we create a mamba environment:
 
       mamba create -n GIS -c openalea3 -c conda-forge openalea.visualea openalea.hydroshoot rpy2 openalea.sconsx
-      conda activate GIS
+      mamba activate GIS
 
 Clone from openalea-incubator:
     
