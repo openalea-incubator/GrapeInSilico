@@ -5,28 +5,12 @@ GrapeInSilico is a user oriented and specialised modelling and simulation enviro
 
 ## Installation
 
-At first you make sure that you have installed the package manager conda in your system: follow the instructions at https://docs.conda.io/en/latest/miniconda.html
+At first you make sure that you have installed the package manager mamba in your system: follow the instructions at [https://github.com/conda-forge/miniforge](https://github.com/conda-forge/miniforge).
 
-Then we create a conda environment:
+Then we create a mamba environment:
 
-      conda create -n GIS -c openalea3 -c conda-forge openalea.plantgl openalea.mtg pyqglviewer python=3.8
+      mamba create -n GIS -c openalea3 -c conda-forge openalea.visualea openalea.hydroshoot rpy2 openalea.sconsx
       conda activate GIS
-      conda install -c openalea3 -c conda-forge numpy scipy qtconsole pandas matplotlib openalea.sconsx alinea.astk alinea.caribu sympy networkx ipykernel ipyparallel pytest rpy2 path jsonschema
-
-Clone the following repositories from github.com/openalea:
-
-*    deploy
-*    core
-*    grapheditor
-*    oalab
-*    openalea-components
-*    visualea
-*    hydroshoot
-
-Checkout the visualea branch in all the above except from deploy & hydroshoot (main).
-
-Install each module using the develop mode
-```python setup.py develop```     (in openalea-components it is ```multisetup.py```)
 
 Clone from openalea-incubator:
     
